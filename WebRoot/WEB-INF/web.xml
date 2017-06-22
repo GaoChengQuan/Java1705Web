@@ -19,4 +19,17 @@
   	<!-- 网名，需要以/开头 -->
   	<url-pattern>/time</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  <servlet>
+  	<servlet-name>FindStudentServlet</servlet-name>
+  	<servlet-class>com.situ.web.servlet.FindtudentServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>FindStudentServlet</servlet-name>
+  	<!-- 网名，需要以/开头 -->
+  	<url-pattern>/findStudent</url-pattern>
+  </servlet-mapping>
 </web-app>
