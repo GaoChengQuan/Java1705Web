@@ -45,4 +45,16 @@
   	<!-- 网名，需要以/开头 -->
   	<url-pattern>/addStudent</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>TestServlet</servlet-name>
+  	<servlet-class>com.situ.web.servlet.TestServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>TestServlet</servlet-name>
+  	<!-- 网名，需要以/开头 -->
+  	<url-pattern>/test</url-pattern>
+  </servlet-mapping>
 </web-app>
