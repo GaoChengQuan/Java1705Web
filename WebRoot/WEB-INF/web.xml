@@ -32,4 +32,17 @@
   	<!-- 网名，需要以/开头 -->
   	<url-pattern>/findStudent</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  <servlet>
+  	<servlet-name>AddStudentServlet</servlet-name>
+  	<servlet-class>com.situ.web.servlet.AddStudentServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>AddStudentServlet</servlet-name>
+  	<!-- 网名，需要以/开头 -->
+  	<url-pattern>/addStudent</url-pattern>
+  </servlet-mapping>
 </web-app>

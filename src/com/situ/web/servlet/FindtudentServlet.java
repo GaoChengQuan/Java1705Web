@@ -26,9 +26,11 @@ public class FindtudentServlet extends HttpServlet{
 		//3.返回结果
 		//乱码问题
 		resp.setContentType("text/html;charset=utf-8");
-		
 		PrintWriter printWriter = resp.getWriter();
-		printWriter.println("<table border='1' cellspacing='0'>");
+		// 当前：/Java1705Web/findServlet
+		// 目标：/Java1705Web/html/add_student.html
+		printWriter.println("<a href='html/add_student.html' >添加</a>");
+		printWriter.println("<table border='1' cellspacing='0' align='center'>");
 		printWriter.println("    <tr>");
 		printWriter.println("         <td>编号</td>");
 		printWriter.println("         <td>姓名</td>");
@@ -46,6 +48,4 @@ public class FindtudentServlet extends HttpServlet{
 		printWriter.println("</table>");
 		printWriter.close();
 	}
-	
-	
 }

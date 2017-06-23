@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/situ.css"/>
+  </head>
+  
+  <body>
+    <h3>欢迎注册</h3>
+    <from action="#" method="">
+    	<p>
+    		账号：<input type="text" maxlength="10" value="zhangsan"/>
+    	</p>
+    	<p>
+    		密码：<input type="password" maxlength="10"/>
+    	</p>
+    	<p>
+    		性别：<input type="radio" name="gender"/> 男 <input type="radio" name="gender"/> 女
+    	</p>
+    	<p>
+    		兴趣：<input type="checkbox" name="favorite"/>音乐<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="favorite"/>看书<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="favorite"/>篮球<br/>
+    	</p>
+    	<p>
+    		<button type="submit">注册</button>
+    	</p>
+    </from>
+    
+    
+    <h3>欢迎注册</h3>
+    <!-- 1.表单元素：
+                       用来声明数据提交的范围，
+                      只有在此元素内的数据可以提交给服务器。
+         action:用来声明数据提交的服务器的地址。
+         method：get/post -->
+    <form action="#">
+    	<table border="1" cellSpacing="0" width="50%">
+    		<tr>
+    			<td>账号：</td>
+    			<!-- 文本框
+            		value:设置默认值
+            		maxlength:设置最大长度
+            		readonly:设置只读-->
+    			<td><input type="text" maxlength="10" value="zhangsan"/></td>
+    		</tr>
+    		<tr>
+    			<td>密码：</td>
+    			<!-- 密码框 :属性同上-->
+    			<td><input type="password" maxlength="10"/></td>
+    		</tr>
+    		<tr>
+    			<td>性别：</td>
+    			<!-- 单选框
+            		name:组名，同一组radio户型排斥
+            		checked:设置默认选中-->
+    			<td>
+    				<input type="radio" name="gender" checked="checked"/> 男 <input type="radio" name="gender"/> 女
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>兴趣：</td>
+    			<!-- 多选框
+            		checked:设置默认选中-->
+    			<td>
+    				<input type="checkbox" name="favorite" checked="checked"/>音乐<br/>
+    				<input type="checkbox" name="favorite"/>看书<br/>
+    				<input type="checkbox" name="favorite"/>篮球<br/>
+    			</td>
+    		</tr>
+    		<tr>
+    			<!-- 按钮
+            		submit:提交表单中的数据
+            		reset：将表单中的数据重置为初始值
+            		button：没有任何功能，需通过js定义功能-->
+    			<td colSpan="2" align="center">
+    				<button type="submit">注册</button>
+    				<button type="reset">重置</button>
+    				<button type="button">测试</button>
+    			</td>
+    		</tr>
+    	</table>
+    </form>
+    <!-- label -->
+    <div>
+    	<input type="checkbox" id="cb"/><label for="cb">用户勾选即代表同意</label>
+    </div>
+    <!-- select 
+    	selected:设置默认选中
+    -->
+    <div>
+    	<select>
+    		<option>北京市</option>
+    		<option>上海市</option>
+    		<option selected="selected">山东省</option>
+    		<option>河南省</option>
+    		<option>江苏省</option>
+    	</select>
+    </div>
+    <!-- 原样输出<h1> 
+    	lt = less than
+    	gt = greater than
+    	nbsp = non-breaking space
+     -->
+    &lt;h1&gt;
+    &copy;
+    <!-- textarea:文本域 
+    	rows:规定文本区内的可见行数。实际的行数肯能会多余rows的行数
+    	cols:规定文本区内的可见宽度。
+    	-->
+    <div>
+    	<textarea rows="3" cols="10">这是文本域的默认值这是文本域的默认值这是文本域的默认值这是文本域的默认值这是文本域的默认值这是文本域的默认值这是文本域的默认值这是文本域的默认值这是文本域的默认值这是文本域的默认值这是文本域的默认值这是文本域的默认值这是文本域的默认值这是文本域的默认值</textarea>
+    </div>
+    
+  </body>
+</html>
