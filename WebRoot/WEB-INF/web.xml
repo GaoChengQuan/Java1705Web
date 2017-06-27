@@ -9,6 +9,13 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- 可以通过ServletContext获取的参数 -->
+  <context-param>
+  	<param-name>size</param-name>
+  	<param-value>20</param-value>
+  </context-param>
+  
+  
   <servlet>
   	<servlet-name>TimeServlet</servlet-name>
   	<servlet-class>com.situ.web.servlet.TimeServlet</servlet-class>
@@ -84,6 +91,66 @@
     	<param-value>10000</param-value>
     </init-param>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ServletContextServlet</servlet-name>
+    <servlet-class>com.situ.day34.ServletContextServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ContextServlet1</servlet-name>
+    <servlet-class>com.situ.day34.ContextServlet1</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ContextServlet2</servlet-name>
+    <servlet-class>com.situ.day34.ContextServlet2</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>InitServlet</servlet-name>
+    <servlet-class>com.situ.day34.InitServlet</servlet-class>
+    <!-- 启动tomcat的时候就加载这个servlet -->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MainServlet</servlet-name>
+    <servlet-class>com.situ.day34.MainServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Servlet1</servlet-name>
+    <servlet-class>com.situ.day34.Servlet1</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Servlet2</servlet-name>
+    <servlet-class>com.situ.day34.Servlet2</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>com.situ.day34.DownloadServlet</servlet-class>
+  </servlet>
+
+
+
+
+  <!-- 这个Servlet不是为了调用的，而是启动的时候初始化数据 -->
+   <!--  <servlet-mapping>
+    <servlet-name>InitServlet</servlet-name>
+    <url-pattern>/init</url-pattern>
+  </servlet-mapping> -->
+
+
+
 
 
 
@@ -106,7 +173,7 @@
      <!-- 2.通配符-->
     <!-- <url-pattern>/*</url-pattern> -->
     <!-- 3、后缀：不允许以/开头 -->
-    <url-pattern>*.action</url-pattern>
+    <url-pattern>*.action1</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>StudentMainServlet</servlet-name>
@@ -120,4 +187,33 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletContextServlet</servlet-name>
+    <url-pattern>/servletContext</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ContextServlet1</servlet-name>
+    <url-pattern>/context1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ContextServlet2</servlet-name>
+    <url-pattern>/context2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MainServlet</servlet-name>
+    <url-pattern>*.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Servlet1</servlet-name>
+    <url-pattern>/servlet1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Servlet2</servlet-name>
+    <url-pattern>/servlet2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/down</url-pattern>
+  </servlet-mapping>
+ 
 </web-app>

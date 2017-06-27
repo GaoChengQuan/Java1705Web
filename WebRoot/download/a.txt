@@ -1,0 +1,103 @@
+六月 27, 2017 3:16:24 下午 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: D:\Java\jdk1.7.0_80\bin;D:\apache-tomcat-7.0.52\bin
+六月 27, 2017 3:16:24 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["http-bio-8081"]
+六月 27, 2017 3:16:24 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["ajp-bio-8009"]
+六月 27, 2017 3:16:24 下午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 504 ms
+六月 27, 2017 3:16:24 下午 org.apache.catalina.core.StandardService startInternal
+信息: Starting service Catalina
+六月 27, 2017 3:16:24 下午 org.apache.catalina.core.StandardEngine startInternal
+信息: Starting Servlet Engine: Apache Tomcat/7.0.52
+六月 27, 2017 3:16:24 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.52\webapps\docs
+六月 27, 2017 3:16:24 下午 org.apache.catalina.util.SessionIdGenerator createSecureRandom
+信息: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [133] milliseconds.
+六月 27, 2017 3:16:24 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.52\webapps\examples
+六月 27, 2017 3:16:25 下午 org.apache.catalina.core.ApplicationContext log
+信息: ContextListener: contextInitialized()
+六月 27, 2017 3:16:25 下午 org.apache.catalina.core.ApplicationContext log
+信息: SessionListener: contextInitialized()
+六月 27, 2017 3:16:25 下午 org.apache.catalina.core.ApplicationContext log
+信息: ContextListener: attributeAdded('org.apache.jasper.compiler.TldLocationsCache', 'org.apache.jasper.compiler.TldLocationsCache@1e629814')
+六月 27, 2017 3:16:25 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.52\webapps\FirstWeb
+六月 27, 2017 3:16:25 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.52\webapps\host-manager
+六月 27, 2017 3:16:25 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.52\webapps\Java1705
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.52\webapps\Java1705Web
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jstl/core_rt is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jstl/core is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jsp/jstl/core is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jstl/fmt_rt is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jstl/fmt is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jsp/jstl/fmt is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jsp/jstl/functions is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://jakarta.apache.org/taglibs/standard/permittedTaglibs is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://jakarta.apache.org/taglibs/standard/scriptfree is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jstl/sql_rt is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jstl/sql is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jsp/jstl/sql is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jstl/xml_rt is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jstl/xml is already defined
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.TaglibUriRule body
+信息: TLD skipped. URI: http://java.sun.com/jsp/jstl/xml is already defined
+构造方法
+init()
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.52\webapps\manager
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.52\webapps\ROOT
+六月 27, 2017 3:16:26 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.52\webapps\tttt
+六月 27, 2017 3:16:27 下午 com.sun.faces.config.ConfigureListener contextInitialized
+信息: Initializing Sun's JavaServer Faces implementation (1.2_04-b07-FCS) for context '/tttt'
+六月 27, 2017 3:16:28 下午 com.sun.faces.spi.InjectionProviderFactory createInstance
+信息: JSF1048: PostConstruct/PreDestroy annotations present.  ManagedBeans methods marked with these annotations will have said annotations processed.
+六月 27, 2017 3:16:28 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-7.0.52\webapps\WebBasics
+六月 27, 2017 3:16:29 下午 com.sun.faces.config.ConfigureListener contextInitialized
+信息: Initializing Sun's JavaServer Faces implementation (1.2_04-b07-FCS) for context '/WebBasics'
+六月 27, 2017 3:16:29 下午 com.sun.faces.spi.InjectionProviderFactory createInstance
+信息: JSF1048: PostConstruct/PreDestroy annotations present.  ManagedBeans methods marked with these annotations will have said annotations processed.
+六月 27, 2017 3:16:30 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["http-bio-8081"]
+六月 27, 2017 3:16:30 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["ajp-bio-8009"]
+六月 27, 2017 3:16:30 下午 org.apache.catalina.startup.Catalina start
+信息: Server startup in 5820 ms
+servlet1 service
+servlet2 service
+Student [id=1, name=zhang, age=23, gender=男, birthday=null]
+Student [id=2, name=李四, age=18, gender=男, birthday=null]
+Student [id=3, name=王五, age=30, gender=女, birthday=null]
+Student [id=4, name=赵六, age=27, gender=男, birthday=null]
+Student [id=5, name=小张, age=18, gender=女, birthday=null]
+Student [id=6, name=小明, age=32, gender=男, birthday=null]
+Student [id=8, name=aaaa, age=199, gender=男, birthday=null]
+Student [id=9, name=张三, age=18, gender=男, birthday=null]
+Student [id=12, name=带符号ID返回, age=33, gender=女, birthday=null]
+Student [id=28, name=aaa, age=111, gender=男, birthday=2017-06-26]
+Student [id=32, name=张三222, age=333, gender=男, birthday=2017-06-26]
+Student [id=33, name=??????, age=44, gender=男, birthday=2017-06-26]
+Student [id=34, name=é??é??, age=88, gender=男, birthday=2017-06-26]
+Student [id=35, name=ee, age=22, gender=男, birthday=2017-06-27]
+Student [id=36, name=gao, age=33, gender=女, birthday=2017-06-27]

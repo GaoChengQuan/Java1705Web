@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Properties;
 
+import javax.servlet.ServletContext;
+
 import com.situ.student.entity.Student;
 
 public class JdbcUtil {
@@ -25,10 +27,12 @@ public class JdbcUtil {
 	private static String driverClass;
 	
 	static {
-		Properties properties = new Properties();
+		/*Properties properties = new Properties();
+		//String path = ServletContext.class.getClassLoader().getResource("db.properties").getPath();
 		FileInputStream fileInputStream = null;
-		/*try {
-			fileInputStream = new FileInputStream("./src/db.properties");
+		try {
+			//fileInputStream = new FileInputStream("./src/db.properties");
+			fileInputStream = new FileInputStream(path);
 			properties.load(fileInputStream);
 			url = properties.getProperty("url");
 			userName = properties.getProperty("userName");
@@ -43,6 +47,9 @@ public class JdbcUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}*/
+		
+		
+		
 		url = "jdbc:mysql://localhost:3306/student_manager";
 		userName = "root";
 		password = "123";

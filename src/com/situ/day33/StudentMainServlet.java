@@ -39,7 +39,7 @@ public class StudentMainServlet extends HttpServlet {
 		List<Student> list = studentService.findAll();
 		// 3.返回结果
 		// 乱码问题
-		//resp.setContentType("text/html;charset=utf-8");
+		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter printWriter = resp.getWriter();
 		// 当前：/Java1705Web/findServlet
 		// 目标：/Java1705Web/html/add_student.html
@@ -51,6 +51,8 @@ public class StudentMainServlet extends HttpServlet {
 		printWriter.println("         <td>姓名</td>");
 		printWriter.println("         <td>年龄</td>");
 		printWriter.println("         <td>性别</td>");
+		printWriter.println("         <td>删除</td>");
+		printWriter.println("         <td>修改</td>");
 		printWriter.println("    </tr>");
 		for (Student student : list) {
 			printWriter.println("<tr>");
@@ -58,6 +60,8 @@ public class StudentMainServlet extends HttpServlet {
 			printWriter.println("    <td>" + student.getName() + "</td>");
 			printWriter.println("    <td>" + student.getAge() + "</td>");
 			printWriter.println("    <td>" + student.getGender() + "</td>");
+			printWriter.println("    <td><a href=/Java1705Web/deleteStudent.do?id=" + student.getId() + ">删除<a/></td>");
+			printWriter.println("    <td><a href=/Java1705Web/updateStudent.do?id=" + student.getId() + ">修改<a/></td>");
 			printWriter.println("</tr>");
 		}
 		printWriter.println("</table>");

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,5 +27,9 @@ public class LoginServlet extends HttpServlet {
 		String maxOnline = servletConfig.getInitParameter("maxOnline");
 		PrintWriter printWriter = resp.getWriter();
 		printWriter.println("maxOnline : " + maxOnline);
+		
+		ServletContext servletContext = getServletContext();
+		String size = servletContext.getInitParameter("size");
+		System.out.println(size);
 	}
 }
