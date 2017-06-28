@@ -17,25 +17,35 @@ import com.situ.student.service.IStudentService;
 import com.situ.student.service.impl.StudentServiceImpl;
 
 public class StudentMainServlet extends HttpServlet {
+	IStudentService studentService = new StudentServiceImpl();
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		
 		String servletPath = req.getServletPath();
 		System.out.println(servletPath);
 		if ("/addStudent.do".equals(servletPath)) {
 			addStudent(req, resp);
 		} else if ("/findStudents.do".equals(servletPath)) {
 			findStudents(req, resp);
+		} else if ("/deleteStudent.do".equals(servletPath)) {
+			deleteStudent(req, resp);
+		}
+	}
+
+	private void deleteStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		String contextPath = req.getContextPath();
+		String id = req.getParameter("id");
+		boolean result = studentService.delete(Integer.parseInt(id));
+		if (result) {
+			resp.sendRedirect(contextPath + "/findStudents.do");
 		}
 	}
 
 	private void findStudents(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		// 1.接收参数
 		// 2.业务处理
-		IStudentService studentService = new StudentServiceImpl();
 		List<Student> list = studentService.findAll();
 		// 3.返回结果
 		// 乱码问题
@@ -98,5 +108,6 @@ public class StudentMainServlet extends HttpServlet {
 		 */
 		// 重定向
 		resp.sendRedirect("findStudents.do");
+		
 	}
 }
