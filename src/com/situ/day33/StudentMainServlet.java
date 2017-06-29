@@ -31,7 +31,34 @@ public class StudentMainServlet extends HttpServlet {
 			findStudents(req, resp);
 		} else if ("/deleteStudent.do".equals(servletPath)) {
 			deleteStudent(req, resp);
+		} else if ("/toUpdateStudent.do".equals(servletPath)) {
+			toUpdateStudent(req, resp);
+		} else if ("/updateStudent.do".equals(servletPath)) {
+			updateStudent(req, resp);
 		}
+	}
+
+	private void updateStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		req.setCharacterEncoding("utf-8");
+		String id = req.getParameter("id");
+		String name = req.getParameter("name");
+		String age = req.getParameter("age");
+		String gender = req.getParameter("gender");
+		
+		Student student = studentService.findById(Integer.parseInt(id));
+		student.setName(name);
+		student.setAge(Integer.parseInt(age));
+		student.setGender(gender);
+		studentService.update(student);
+		
+		resp.sendRedirect(req.getContextPath() + "/findStudents.do");
+	}
+
+	private void toUpdateStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		Student student = studentService.findById(Integer.parseInt(id));
+		req.setAttribute("student", student);
+		req.getRequestDispatcher("/edit_student.jsp").forward(req, resp);
 	}
 
 	private void deleteStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -43,13 +70,15 @@ public class StudentMainServlet extends HttpServlet {
 		}
 	}
 
-	private void findStudents(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void findStudents(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		// 1.接收参数
 		// 2.业务处理
 		List<Student> list = studentService.findAll();
 		// 3.返回结果
+		req.setAttribute("list", list);
+		req.getRequestDispatcher("/student_list.jsp").forward(req, resp);
 		// 乱码问题
-		resp.setContentType("text/html;charset=utf-8");
+		/*resp.setContentType("text/html;charset=utf-8");
 		PrintWriter printWriter = resp.getWriter();
 		// 当前：/Java1705Web/findServlet
 		// 目标：/Java1705Web/html/add_student.html
@@ -75,10 +104,11 @@ public class StudentMainServlet extends HttpServlet {
 			printWriter.println("</tr>");
 		}
 		printWriter.println("</table>");
-		printWriter.close();
+		printWriter.close();*/
 	}
 
 	private void addStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		req.setCharacterEncoding("utf-8");
 		// 1.接收参数
 		String name = req.getParameter("name");
 		String age = req.getParameter("age");
@@ -86,9 +116,9 @@ public class StudentMainServlet extends HttpServlet {
 		System.out.println("name:" + name);
 		System.out.println("age:" + age);
 		System.out.println("gender:" + gender);
-		byte[] bytes = gender.getBytes("iso8859-1");
+	/*	byte[] bytes = gender.getBytes("iso8859-1");
 		gender = new String(bytes, "utf-8");
-		System.out.println("gender: " + gender);
+		System.out.println("gender: " + gender);*/
 		// 2.处理业务
 		Date date = new Date();
 		Student student = new Student(name, Integer.parseInt(age), gender, date);
