@@ -1,8 +1,9 @@
-package com.situ.day33;
+package com.situ.student.controller;
 
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +36,31 @@ public class StudentMainServlet extends HttpServlet {
 			toUpdateStudent(req, resp);
 		} else if ("/updateStudent.do".equals(servletPath)) {
 			updateStudent(req, resp);
+		} else if ("/searchByName.do".equals(servletPath)) {
+			searchByName(req, resp);
+		} else if ("/searchByAge.do".equals(servletPath)) {
+			searchByAge(req, resp);
+		} else if ("/searchByGender.do".equals(servletPath)) {
+			searchByGender(req, resp);
 		}
+	}
+
+	private void searchByGender(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void searchByAge(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void searchByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
+		req.setCharacterEncoding("utf-8");
+		String searchValue = req.getParameter("searchValue");
+		List<Student> list = studentService.findByName(searchValue);
+		req.setAttribute("list", list);
+		req.getRequestDispatcher("/student_list.jsp").forward(req, resp);
 	}
 
 	private void updateStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException {

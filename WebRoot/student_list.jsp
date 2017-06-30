@@ -8,6 +8,15 @@
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css" />
     <script src="lib/jquery/jquery-1.11.1.js" type="text/javascript" charset="utf-8"></script>
 	<script src="lib/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function delProduct(id){
+			var isDel = confirm("您确认要删除吗？");
+			if(isDel){
+				//要删除
+				location.href = "<%=request.getContextPath()%>/deleteStudent.do?id="+id;
+			}
+		}
+	</script>
   </head>
   <body>
   	<%
@@ -31,7 +40,7 @@
 	  			<td><%=student.getName() %></td>
 	  			<td><%=student.getAge() %></td>
 	  			<td><%=student.getGender() %></td>
-	  			<td><a href="<%=request.getContextPath()%>/deleteStudent.do?id=<%=student.getId() %>">删除</a></td>
+	  			<td><a href="javascript:void(0);" onclick="delStudent('<%=student.getId() %>')">删除</a></td>
 	  			<td><a href="<%=request.getContextPath()%>/toUpdateStudent.do?id=<%=student.getId() %>">修改</a></td>
   			</tr>
   		<%
@@ -39,5 +48,6 @@
   		 %>
   	</table>
   	<a class="btn btn-primary" href="<%=request.getContextPath()%>/html/add_student.html">添加学生</a>
+  	<a class="btn btn-primary" href="<%=request.getContextPath()%>/html/search_student.html">搜索学生</a>
   </body>
 </html>
