@@ -20,11 +20,27 @@
 					+ id;
 		}
 	}
+	
+	$(function(){
+		$("#gender option[value='${searchCondition.gender}']").prop("selected", true);
+	});
 </script>
 </head>
 <body>
 	<div class="container" style="width:70%">
 		<h2 align="center">学生信息管理系统</h2>
+		<div>
+			<form action="${pageContext.request.contextPath}/student?method=searchByCondition" method="post">
+				姓名:<input type="text" name="name" value="${searchCondition.name}"/>
+				年龄:<input type="text" name="age" value="${searchCondition.age}"/>
+				性别:<select id="gender" name="gender">
+						<option value="">不限</option>
+						<option value="男">男</option>
+						<option value="女">女</option>
+				    </select>&nbsp;&nbsp;&nbsp;
+				<button class="btn btn-primary">搜索</button>
+			</form>
+		</div>
 		<table class="table table-bordered table-hover table-striped">
 			<tr>
 				<td>ID</td>
@@ -50,9 +66,9 @@
 			</c:forEach>
 		</table>
 		<a class="btn btn-primary"
-			href="${pageContext.request.contextPath}/add_student.jsp">添加学生</a> <a
-			class="btn btn-primary"
-			href="${pageContext.request.contextPath}/html/search_student.html">搜索学生</a>
+			href="${pageContext.request.contextPath}/add_student.jsp">添加学生</a>
+		<a class="btn btn-primary"
+			href="${pageContext.request.contextPath}/student?method=findAll">查询所有</a>
 	</div>
 </body>
 </html>

@@ -8,6 +8,7 @@ import com.situ.student.dao.impl.StudentDaoOraclempl;
 import com.situ.student.entity.Student;
 import com.situ.student.exception.NameRepeatException;
 import com.situ.student.service.IStudentService;
+import com.situ.student.vo.SearchCondition;
 
 public class StudentServiceImpl implements IStudentService{
 	//后期这一块是Spring帮助我们管理
@@ -61,6 +62,11 @@ public class StudentServiceImpl implements IStudentService{
 	@Override
 	public List<Student> findByBirthday(String beginTime, String endTime) {
 		return studentDao.findByBirthday(beginTime, endTime);
+	}
+
+	@Override
+	public List<Student> searchByCondition(SearchCondition searchCondition) {
+		return studentDao.searchByCondition(searchCondition);
 	}
 
 }

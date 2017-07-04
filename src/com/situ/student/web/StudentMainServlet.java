@@ -16,14 +16,20 @@ import com.situ.student.entity.Student;
 import com.situ.student.exception.NameRepeatException;
 import com.situ.student.service.IStudentService;
 import com.situ.student.service.impl.StudentServiceImpl;
+import com.situ.student.vo.SearchCondition;
 
 public class StudentMainServlet extends BaseServlet {
 	IStudentService studentService = new StudentServiceImpl();
 	
-	private void searchByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
-		req.setCharacterEncoding("utf-8");
-		String searchValue = req.getParameter("searchValue");
-		List<Student> list = studentService.findByName(searchValue);
+	private void searchByCondition(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
+		String name = req.getParameter("name");
+		String age = req.getParameter("age");
+		String gender = req.getParameter("gender");
+		SearchCondition searchCondition = new SearchCondition(name, age, gender);
+		System.out.println(searchCondition.toString());
+		
+		List<Student> list = studentService.searchByCondition(searchCondition);
+		req.setAttribute("searchCondition", searchCondition);
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("/student_list.jsp").forward(req, resp);
 	}

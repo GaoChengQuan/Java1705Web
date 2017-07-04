@@ -26,7 +26,7 @@
 		    <label for="gender">性别</label>
 		    <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender">
 		  </div>
-		  <button type="submit" class="btn btn-default">添加学生</button>
+		  <button type="submit" class="btn btn-primary">添加学生</button>
 		</form>
      </div>
   </body>

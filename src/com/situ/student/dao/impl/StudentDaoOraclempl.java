@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.situ.student.dao.IStudentDao;
 import com.situ.student.entity.Student;
+import com.situ.student.vo.SearchCondition;
 
 public class StudentDaoOraclempl implements IStudentDao{
 
@@ -55,6 +56,12 @@ public class StudentDaoOraclempl implements IStudentDao{
 
 	@Override
 	public List<Student> findByBirthday(String beginTime, String endTime) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Student> searchByCondition(SearchCondition searchCondition) {
 		// TODO Auto-generated method stub
 		return null;
 	}

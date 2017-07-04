@@ -3,6 +3,7 @@ package com.situ.student.dao;
 import java.util.List;
 
 import com.situ.student.entity.Student;
+import com.situ.student.vo.SearchCondition;
 /**
  * 对Student进行Dao操作的接口
  * @author Gao
@@ -78,6 +79,14 @@ public interface IStudentDao {
 	 */
 	public abstract List<Student> findByBirthday(String beginTime,
 			String endTime);
+
+	/**
+	 * 根据条件完成搜索
+	 * @param searchCondition
+	 * @return
+	 */
+	public abstract List<Student> searchByCondition(
+			SearchCondition searchCondition);
 
 	
 }
