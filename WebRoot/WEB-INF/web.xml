@@ -5,6 +5,20 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name></display-name>	
+  
+ <!-- 全局错误处理页面配置 -->
+ <error-page>
+ 	<error-code>500</error-code>
+ 	<location>/common/500.jsp</location>
+ </error-page>
+ <error-page>
+ 	<error-code>404</error-code>
+ 	<location>/common/404.html</location>
+ </error-page>
+  
+  
+  
+  
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
@@ -74,7 +88,7 @@
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>StudentMainServlet</servlet-name>
-    <servlet-class>com.situ.student.controller.StudentMainServlet</servlet-class>
+    <servlet-class>com.situ.student.web.StudentMainServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
@@ -255,7 +269,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>StudentMainServlet</servlet-name>
-    <url-pattern>*.do</url-pattern>
+    <url-pattern>/student</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ThreadServlet</servlet-name>
@@ -339,4 +353,12 @@
   </servlet-mapping>
  
  
+ <servlet>
+    <servlet-name>ClassMainSevlet</servlet-name>
+    <servlet-class>com.situ.student.web.ClassMainSevlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClassMainSevlet</servlet-name>
+    <url-pattern>/class</url-pattern>
+  </servlet-mapping>
 </web-app>

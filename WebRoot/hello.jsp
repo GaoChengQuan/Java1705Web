@@ -9,6 +9,7 @@
   </head>
   
   <body>
+  <%=1/0 %>
     <!-- JSP脚本 -->
   	<%
   		String name = "zhangsan";
