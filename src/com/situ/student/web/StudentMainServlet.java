@@ -16,10 +16,31 @@ import com.situ.student.entity.Student;
 import com.situ.student.exception.NameRepeatException;
 import com.situ.student.service.IStudentService;
 import com.situ.student.service.impl.StudentServiceImpl;
+import com.situ.student.vo.PageBean;
 import com.situ.student.vo.SearchCondition;
 
 public class StudentMainServlet extends BaseServlet {
 	IStudentService studentService = new StudentServiceImpl();
+	
+	private void pageList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
+		// 1.接收参数
+		String pageIndexStr = req.getParameter("pageIndex");
+		if (pageIndexStr == null || pageIndexStr.equals("")) {
+			pageIndexStr = "1";
+		}
+		int pageIndex = Integer.parseInt(pageIndexStr);
+		String pageSizeStr = req.getParameter("pageSize");
+		if (pageSizeStr == null || pageIndexStr.equals("")) {
+			pageSizeStr = "3";
+		}
+		int pageSize = Integer.parseInt(pageSizeStr);
+		// 2.业务处理
+		PageBean pageBean = studentService.getPageBean(pageIndex, pageSize);
+		System.out.println(pageBean);
+		// 3.返回结果
+		req.setAttribute("pageBean", pageBean);
+		req.getRequestDispatcher("/student_list.jsp").forward(req, resp);
+	}
 	
 	private void searchByCondition(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
 		String name = req.getParameter("name");

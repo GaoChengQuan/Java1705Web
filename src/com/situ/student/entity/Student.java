@@ -87,8 +87,6 @@ public class Student {
 
 	@Override
 	public String toString() {
-		String string = null;
-		string.charAt(1);
 		return "Student [id=" + id + ", name=" + name + ", age=" + age
 				+ ", gender=" + gender + ", birthday=" + birthday + "]";
 	}

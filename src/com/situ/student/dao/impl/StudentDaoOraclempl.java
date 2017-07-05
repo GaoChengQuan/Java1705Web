@@ -66,4 +66,16 @@ public class StudentDaoOraclempl implements IStudentDao{
 		return null;
 	}
 
+	@Override
+	public int getTotalCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Student> findPageBeanList(int index, int pageSize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

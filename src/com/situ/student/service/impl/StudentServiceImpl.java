@@ -1,5 +1,6 @@
 package com.situ.student.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.situ.student.dao.IStudentDao;
@@ -8,6 +9,7 @@ import com.situ.student.dao.impl.StudentDaoOraclempl;
 import com.situ.student.entity.Student;
 import com.situ.student.exception.NameRepeatException;
 import com.situ.student.service.IStudentService;
+import com.situ.student.vo.PageBean;
 import com.situ.student.vo.SearchCondition;
 
 public class StudentServiceImpl implements IStudentService{
@@ -67,6 +69,34 @@ public class StudentServiceImpl implements IStudentService{
 	@Override
 	public List<Student> searchByCondition(SearchCondition searchCondition) {
 		return studentDao.searchByCondition(searchCondition);
+	}
+
+	@Override
+	public PageBean getPageBean(int pageIndex, int pageSize) {
+		PageBean pageBean = new PageBean();
+		// 1、当前页private Integer pageIndex;
+		pageBean.setPageIndex(pageIndex);
+		// 2、当前页显示的条数private Integer pageSize;
+		pageBean.setPageSize(pageSize);
+		// 3、总条数private Integer totalCount;
+		int totalCount = studentDao.getTotalCount();
+		pageBean.setTotalCount(totalCount);
+		// 4、总页数private Integer totalPage;
+		/*
+		 * 总条数      当前页显示的条数        总页数   
+		 * 10		3		      4
+		 * 11		3			  4
+		 * 12       3			  4
+		 * 13       3			  5
+		 */
+		int totalPage = (int) Math.ceil((double)totalCount / pageSize);
+		pageBean.setTotalPage(totalPage);
+		// 5、当前页要显示的数据private List<Student> list = new ArrayList<Student>();
+		int index = (pageIndex - 1) * pageSize;
+		List<Student> list = studentDao.findPageBeanList(index, pageSize);
+		pageBean.setList(list);
+		
+		return pageBean;
 	}
 
 }

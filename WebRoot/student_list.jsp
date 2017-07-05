@@ -6,7 +6,7 @@
 <head>
 <title>My JSP 'student_list.jsp' starting page</title>
 <link rel="stylesheet" type="text/css"
-	href="lib/bootstrap/css/bootstrap.css" />
+	href="${pageContext.request.contextPath}/lib/bootstrap/css/bootstrap.css" />
 <script src="lib/jquery/jquery-1.11.1.js" type="text/javascript"
 	charset="utf-8"></script>
 <script src="lib/bootstrap/js/bootstrap.js" type="text/javascript"
@@ -29,18 +29,18 @@
 <body>
 	<div class="container" style="width:70%">
 		<h2 align="center">学生信息管理系统</h2>
-		<div>
-			<form action="${pageContext.request.contextPath}/student?method=searchByCondition" method="post">
-				姓名:<input type="text" name="name" value="${searchCondition.name}"/>
-				年龄:<input type="text" name="age" value="${searchCondition.age}"/>
-				性别:<select id="gender" name="gender">
-						<option value="">不限</option>
-						<option value="男">男</option>
-						<option value="女">女</option>
-				    </select>&nbsp;&nbsp;&nbsp;
-				<button class="btn btn-primary">搜索</button>
-			</form>
-		</div>
+	<div>
+		<form action="${pageContext.request.contextPath}/student?method=searchByCondition" method="post">
+			姓名:<input type="text" name="name" value="${searchCondition.name}"/>
+			年龄:<input type="text" name="age" value="${searchCondition.age}"/>
+			性别:<select id="gender" name="gender">
+					<option value="">不限</option>
+					<option value="男">男</option>
+					<option value="女">女</option>
+			    </select>&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-primary">搜索</button>
+		</form>
+	</div>
 		<table class="table table-bordered table-hover table-striped">
 			<tr>
 				<td>ID</td>
@@ -50,7 +50,7 @@
 				<td>删除</td>
 				<td>修改</td>
 			</tr>
-			<c:forEach items="${list}" var="student">
+			<c:forEach items="${pageBean.list}" var="student">
 				<tr>
 					<td>${student.getId()}</td>
 					<td>${student.getName()}</td>

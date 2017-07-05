@@ -302,4 +302,54 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 		}
 		return list;
 	}
+
+	@Override
+	public int getTotalCount() {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		int count = 0;
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "SELECT COUNT(*) FROM student;";
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				count = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
+
+	@Override
+	public List<Student> findPageBeanList(int index, int pageSize) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		List<Student> list = new ArrayList<Student>();
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select * from student limit ?,?;";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setObject(1, index);
+			preparedStatement.setObject(2, pageSize);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String name = resultSet.getString("name");
+				int age = resultSet.getInt("age");
+				String gender = resultSet.getString("gender");
+				Date birthday = resultSet.getDate("birthday");
+				Student student = new Student(id, name, age, gender, birthday);
+				list.add(student);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

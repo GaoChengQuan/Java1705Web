@@ -36,6 +36,5 @@ public class BaseServlet extends HttpServlet{
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		
 	}
 }

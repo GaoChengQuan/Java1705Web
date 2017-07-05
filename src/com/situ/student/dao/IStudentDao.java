@@ -88,5 +88,19 @@ public interface IStudentDao {
 	public abstract List<Student> searchByCondition(
 			SearchCondition searchCondition);
 
+	/**
+	 * 获得一共有多少条数据
+	 * @return
+	 */
+	public abstract int getTotalCount();
+
+	/**
+	 * 分页查询
+	 * @param index
+	 * @param pageSize
+	 * @return
+	 */
+	public abstract List<Student> findPageBeanList(int index, int pageSize);
+
 	
 }

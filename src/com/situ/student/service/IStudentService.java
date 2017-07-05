@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.situ.student.entity.Student;
 import com.situ.student.exception.NameRepeatException;
+import com.situ.student.vo.PageBean;
 import com.situ.student.vo.SearchCondition;
 
 public interface IStudentService {
@@ -78,4 +79,12 @@ public interface IStudentService {
 	 */
 	public abstract List<Student> searchByCondition(
 			SearchCondition searchCondition);
+
+	/**
+	 * 分页查找
+	 * @param pageIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public abstract PageBean getPageBean(int pageIndex, int pageSize);
 }
