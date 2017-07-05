@@ -36,6 +36,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(connection, preparedStatement);
 		}
 		return false;
 	}
@@ -57,6 +59,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(connection, preparedStatement);
 		}
 		return false;
 	}
@@ -81,6 +85,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(connection, preparedStatement);
 		}
 		return false;
 	}
@@ -107,6 +113,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(connection, preparedStatement);
 		}
 		return list;
 	}
@@ -132,6 +140,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(connection, preparedStatement);
 		}
 		return student;
 	}
@@ -170,6 +180,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
 		}
 		return list;
 	}
@@ -197,6 +209,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
 		}
 		return list;
 	}
@@ -223,6 +237,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}  finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
 		}
 		return list;
 	}
@@ -251,6 +267,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}  finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
 		}
 		return list;
 	}
@@ -299,13 +317,14 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
 		}
 		return list;
 	}
 
 	@Override
 	public int getTotalCount() {
-
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -320,6 +339,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}  finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
 		}
 		
 		return count;
@@ -349,6 +370,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}  finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
 		}
 		return list;
 	}

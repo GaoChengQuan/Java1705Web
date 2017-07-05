@@ -3,23 +3,17 @@ package com.situ.student.vo;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.situ.student.entity.Student;
-
-public class PageBean {
+public class PageBean<T> {
 	// 当前页
 	private Integer pageIndex;
-
 	// 当前页显示的条数
 	private Integer pageSize;
-
 	// 总条数
 	private Integer totalCount;
-	
 	// 总页数
 	private Integer totalPage;
-
 	// 当前页要显示的数据
-	private List<Student> list = new ArrayList<Student>();
+	private List<T> list = new ArrayList<T>();
 
 	public Integer getPageIndex() {
 		return pageIndex;
@@ -53,11 +47,11 @@ public class PageBean {
 		this.totalCount = totalCount;
 	}
 
-	public List<Student> getList() {
+	public List<T> getList() {
 		return list;
 	}
 
-	public void setList(List<Student> list) {
+	public void setList(List<T> list) {
 		this.list = list;
 	}
 

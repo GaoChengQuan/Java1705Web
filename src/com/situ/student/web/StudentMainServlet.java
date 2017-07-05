@@ -68,7 +68,7 @@ public class StudentMainServlet extends BaseServlet {
 		student.setGender(gender);
 		studentService.update(student);
 		
-		resp.sendRedirect(req.getContextPath() + "/student?method=findAll");
+		resp.sendRedirect(req.getContextPath() + "/student?method=pageList");
 	}
 
 	private void toUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -83,7 +83,7 @@ public class StudentMainServlet extends BaseServlet {
 		String id = req.getParameter("id");
 		boolean result = studentService.delete(Integer.parseInt(id));
 		if (result) {
-			resp.sendRedirect(contextPath + "/student?method=findAll");
+			resp.sendRedirect(contextPath + "/student?method=pageList");
 		}
 	}
 
@@ -118,7 +118,7 @@ public class StudentMainServlet extends BaseServlet {
 		// 3.输出响应
 		resp.setContentType("text/html;charset=utf-8");
 		// 重定向
-		resp.sendRedirect(req.getContextPath() + "/student?method=findAll");
+		resp.sendRedirect(req.getContextPath() + "/student?method=pageList");
 		
 	}
 }

@@ -11,8 +11,8 @@
 	<div class="container" style="width:40%">
 		<h2>修改学生信息</h2>
 		<form
-			action="${pageContext.request.contextPath}/student?method=update"
-			method=post>
+			action="${pageContext.request.contextPath}/student?method=update" method=post>
+			<input type="hidden" name="id" value="${student.getId()}">
 			<div class="form-group">
 				<label for="name">姓名</label> 
 				<input type="text" class="form-control"

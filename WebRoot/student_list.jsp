@@ -29,18 +29,23 @@
 <body>
 	<div class="container" style="width:70%">
 		<h2 align="center">学生信息管理系统</h2>
-	<div>
-		<form action="${pageContext.request.contextPath}/student?method=searchByCondition" method="post">
-			姓名:<input type="text" name="name" value="${searchCondition.name}"/>
-			年龄:<input type="text" name="age" value="${searchCondition.age}"/>
-			性别:<select id="gender" name="gender">
-					<option value="">不限</option>
-					<option value="男">男</option>
-					<option value="女">女</option>
-			    </select>&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-primary">搜索</button>
-		</form>
-	</div>
+		<div>
+			<form action="${pageContext.request.contextPath}/student?method=searchByCondition" method="post">
+				姓名:<input type="text" name="name" value="${searchCondition.name}"/>
+				年龄:<input type="text" name="age" value="${searchCondition.age}"/>
+				性别:<select id="gender" name="gender">
+						<option value="">不限</option>
+						<option value="男">男</option>
+						<option value="女">女</option>
+				    </select>&nbsp;&nbsp;&nbsp;
+				<button type="submit" class="btn btn-primary">搜索</button>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="btn btn-primary"
+					href="${pageContext.request.contextPath}/add_student.jsp">添加学生</a>
+				<a class="btn btn-primary"
+					href="${pageContext.request.contextPath}/student?method=pageList">查询所有</a>
+			</form>
+		</div>
 		<table class="table table-bordered table-hover table-striped">
 			<tr>
 				<td>ID</td>
@@ -65,10 +70,56 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a class="btn btn-primary"
-			href="${pageContext.request.contextPath}/add_student.jsp">添加学生</a>
-		<a class="btn btn-primary"
-			href="${pageContext.request.contextPath}/student?method=findAll">查询所有</a>
+		
+		<!-- 分页开始 -->
+		<nav aria-label="Page navigation" align="center">
+		  <ul class="pagination">
+		  	<!-- 上一页 -->
+		  	<!-- 判断是否是第一页，是第一页就让一个li设置class=disable -->
+		  	 <c:if test="${pageBean.pageIndex==1}">
+			  	 <li class="disabled">
+			      <a href="javascript:void(0);">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+		  	 </c:if>
+		  	<c:if test="${pageBean.pageIndex!=1}">
+			    <li>
+			      <a href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${pageBean.pageIndex-1}&pageSize=3" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+		    </c:if>
+		    
+		    <c:forEach begin="1" end="${pageBean.totalPage}" var="page">
+		    	<c:if test="${pageBean.pageIndex==page}">
+			    	<li class="active"><a href="javascript:void(0);">${page}</a></li>
+		    	</c:if>
+		    	<c:if test="${pageBean.pageIndex!=page}">
+			    	<li><a href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${page}&pageSize=3">${page}</a></li>
+		    	</c:if>
+		    </c:forEach>
+		    
+		    
+		    <!-- 上一页 -->
+		  	<!-- 判断是否是第一页，是第一页就让一个li设置class=disable -->
+		  	 <c:if test="${pageBean.pageIndex==pageBean.totalPage}">
+			  	 <li class="disabled">
+			      <a href="javascript:void(0);">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>
+		  	 </c:if>
+		  	<c:if test="${pageBean.pageIndex!=pageBean.totalPage}">
+			    <li>
+			      <a href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${pageBean.pageIndex+1}&pageSize=3" aria-label="Previous">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>
+		    </c:if>
+		  </ul>
+		</nav>
+		<!-- 分页结束 -->
 	</div>
 </body>
 </html>
