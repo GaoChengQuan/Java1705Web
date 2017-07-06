@@ -301,7 +301,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			}
 		    //limit ?,?
 			sql += "limit ?,?";
-			listCondition.add(searchCondition.getPageIndex());
+			int index = (searchCondition.getPageIndex() - 1) * searchCondition.getPageSize();
+			listCondition.add(index);
 			listCondition.add(searchCondition.getPageSize());
 			
 			preparedStatement = connection.prepareStatement(sql);
@@ -309,7 +310,6 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			for (int i = 0; i < listCondition.size(); i++) {
 				preparedStatement.setObject(i + 1, listCondition.get(i));
 			}
-			
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
@@ -410,6 +410,7 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			for (int i = 0; i < listCondition.size(); i++) {
 				preparedStatement.setObject(i + 1, listCondition.get(i));
 			}
+			System.out.println(preparedStatement);
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
 				count = resultSet.getInt(1);

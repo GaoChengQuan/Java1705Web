@@ -21,6 +21,11 @@
 		}
 	}
 	
+	function goPage(pageIndex) {
+		$("#pageIndex").val(pageIndex);
+		$("#searchForm").submit();
+	}
+	
 	$(function(){
 		$("#gender option[value='${searchCondition.gender}']").prop("selected", true);
 	});
@@ -30,7 +35,8 @@
 	<div class="container" style="width:70%">
 		<h2 align="center">学生信息管理系统</h2>
 		<div>
-			<form action="${pageContext.request.contextPath}/student?method=searchByCondition" method="post">
+			<form id="searchForm" action="${pageContext.request.contextPath}/student?method=searchByCondition" method="post">
+				<input type="hidden" name="pageIndex" id="pageIndex"/>
 				姓名:<input type="text" name="name" value="${searchCondition.name}"/>
 				年龄:<input type="text" name="age" value="${searchCondition.age}"/>
 				性别:<select id="gender" name="gender">
@@ -85,7 +91,7 @@
 		  	 </c:if>
 		  	<c:if test="${pageBean.pageIndex!=1}">
 			    <li>
-			      <a href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${pageBean.pageIndex-1}&pageSize=3" aria-label="Previous">
+			      <a href="javascript:goPage('${pageBean.pageIndex-1}');" aria-label="Previous">
 			        <span aria-hidden="true">&laquo;</span>
 			      </a>
 			    </li>
@@ -96,7 +102,7 @@
 			    	<li class="active"><a href="javascript:void(0);">${page}</a></li>
 		    	</c:if>
 		    	<c:if test="${pageBean.pageIndex!=page}">
-			    	<li><a href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${page}&pageSize=3">${page}</a></li>
+			    	<li><a href="javascript:goPage('${page}');">${page}</a></li>
 		    	</c:if>
 		    </c:forEach>
 		    
@@ -112,7 +118,7 @@
 		  	 </c:if>
 		  	<c:if test="${pageBean.pageIndex!=pageBean.totalPage}">
 			    <li>
-			      <a href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${pageBean.pageIndex+1}&pageSize=3" aria-label="Previous">
+			      <a href="javascript:goPage('${pageBean.pageIndex+1}');" aria-label="Previous">
 			        <span aria-hidden="true">&raquo;</span>
 			      </a>
 			    </li>

@@ -61,6 +61,7 @@ public class StudentMainServlet extends BaseServlet {
 		System.out.println(searchCondition.toString());
 		//2.调用业务逻辑
 		PageBean<Student> pageBean = studentService.searchByCondition(searchCondition);
+		System.out.println(pageBean);
 		//3.跳转到相应界面
 		req.setAttribute("searchCondition", searchCondition);
 		req.setAttribute("pageBean", pageBean);
