@@ -102,5 +102,12 @@ public interface IStudentDao {
 	 */
 	public abstract List<Student> findPageBeanList(int index, int pageSize);
 
+	/**
+	 * 根据条件查询一共有多少个
+	 * @param searchCondition
+	 * @return
+	 */
+	public abstract int getTotalCountByCondition(SearchCondition searchCondition);
+
 	
 }

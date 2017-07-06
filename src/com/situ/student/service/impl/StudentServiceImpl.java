@@ -67,8 +67,23 @@ public class StudentServiceImpl implements IStudentService{
 	}
 
 	@Override
-	public List<Student> searchByCondition(SearchCondition searchCondition) {
-		return studentDao.searchByCondition(searchCondition);
+	public PageBean<Student> searchByCondition(SearchCondition searchCondition) {
+		PageBean<Student> pageBean = new PageBean<Student>();
+		// 1、当前页private Integer pageIndex;
+		pageBean.setPageIndex(searchCondition.getPageIndex());
+		// 2、当前页显示的条数private Integer pageSize;
+		pageBean.setPageSize(searchCondition.getPageSize());
+		// 3、总条数private Integer totalCount;
+		int totalCount = studentDao.getTotalCountByCondition(searchCondition);
+		pageBean.setTotalCount(totalCount);
+		// 4、总页数private Integer totalPage;
+		int totalPage = (int) Math.ceil((double)totalCount / searchCondition.getPageSize());
+		pageBean.setTotalPage(totalPage);
+		// 5、当前页要显示的数据private List<T> list = new ArrayList<T>();
+		List<Student> list = studentDao.searchByCondition(searchCondition);
+		pageBean.setList(list);
+		
+		return pageBean;
 	}
 
 	@Override

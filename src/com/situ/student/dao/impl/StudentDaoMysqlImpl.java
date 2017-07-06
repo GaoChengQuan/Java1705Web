@@ -281,9 +281,9 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 		List<Student> list = new ArrayList<Student>();
 		try {
 			connection = JdbcUtil.getConnection();
-			//String sql = "select * from student where name like ? and age=? and gender=?;";
+			//String sql = "select * from student where name like ? and age=? and gender=? limit ?,?;";
 			String sql = "select * from student where 1=1 ";
-			List<String> listCondition = new ArrayList<String>();
+			List listCondition = new ArrayList();
 			if (searchCondition.getName() != null
 					&& !searchCondition.getName().equals("")) {
 				sql += " and name like ? ";
@@ -299,6 +299,11 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 				sql += " and gender = ? ";
 				listCondition.add(searchCondition.getGender());
 			}
+		    //limit ?,?
+			sql += "limit ?,?";
+			listCondition.add(searchCondition.getPageIndex());
+			listCondition.add(searchCondition.getPageSize());
+			
 			preparedStatement = connection.prepareStatement(sql);
 			
 			for (int i = 0; i < listCondition.size(); i++) {
@@ -374,5 +379,47 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			JdbcUtil.close(connection, preparedStatement, resultSet);
 		}
 		return list;
+	}
+
+	@Override
+	public int getTotalCountByCondition(SearchCondition searchCondition) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		int count = 0;
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select count(*) from student where 1=1 ";
+			List listCondition = new ArrayList();
+			if (searchCondition.getName() != null
+					&& !searchCondition.getName().equals("")) {
+				sql += " and name like ? ";
+				listCondition.add("%" + searchCondition.getName() + "%");
+			}
+			if (searchCondition.getAge() != null
+					&& !searchCondition.getAge().equals("")) {
+				sql += " and age = ? ";
+				listCondition.add(searchCondition.getAge());
+			}
+			if (searchCondition.getGender() != null
+					&& !searchCondition.getGender().equals("")) {
+				sql += " and gender = ? ";
+				listCondition.add(searchCondition.getGender());
+			}			
+			preparedStatement = connection.prepareStatement(sql);
+			for (int i = 0; i < listCondition.size(); i++) {
+				preparedStatement.setObject(i + 1, listCondition.get(i));
+			}
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				count = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
+		}
+		
+		return count;
 	}
 }

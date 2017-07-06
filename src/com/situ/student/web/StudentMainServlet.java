@@ -43,15 +43,27 @@ public class StudentMainServlet extends BaseServlet {
 	}
 	
 	private void searchByCondition(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
+		//1.接收参数，封装数据
+		String pageIndexStr = req.getParameter("pageIndex");
+		if (pageIndexStr == null || pageIndexStr.equals("")) {
+			pageIndexStr = "1";
+		}
+		int pageIndex = Integer.parseInt(pageIndexStr);
+		String pageSizeStr = req.getParameter("pageSize");
+		if (pageSizeStr == null || pageIndexStr.equals("")) {
+			pageSizeStr = "3";
+		}
+		int pageSize = Integer.parseInt(pageSizeStr);
 		String name = req.getParameter("name");
 		String age = req.getParameter("age");
 		String gender = req.getParameter("gender");
-		SearchCondition searchCondition = new SearchCondition(name, age, gender);
+		SearchCondition searchCondition = new SearchCondition(pageIndex, pageSize, name, age, gender);
 		System.out.println(searchCondition.toString());
-		
-		List<Student> list = studentService.searchByCondition(searchCondition);
+		//2.调用业务逻辑
+		PageBean<Student> pageBean = studentService.searchByCondition(searchCondition);
+		//3.跳转到相应界面
 		req.setAttribute("searchCondition", searchCondition);
-		req.setAttribute("list", list);
+		req.setAttribute("pageBean", pageBean);
 		req.getRequestDispatcher("/student_list.jsp").forward(req, resp);
 	}
 

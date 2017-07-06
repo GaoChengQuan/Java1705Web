@@ -78,4 +78,10 @@ public class StudentDaoOraclempl implements IStudentDao{
 		return null;
 	}
 
+	@Override
+	public int getTotalCountByCondition(SearchCondition searchCondition) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

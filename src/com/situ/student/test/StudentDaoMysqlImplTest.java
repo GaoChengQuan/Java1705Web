@@ -9,6 +9,7 @@ import org.junit.Test;
 import com.situ.student.dao.IStudentDao;
 import com.situ.student.dao.impl.StudentDaoMysqlImpl;
 import com.situ.student.entity.Student;
+import com.situ.student.vo.SearchCondition;
 
 public class StudentDaoMysqlImplTest {
 	
@@ -90,5 +91,31 @@ public class StudentDaoMysqlImplTest {
 		for (Student student : list) {
 			System.out.println(student);
 		}
+	}
+	
+	
+	@Test
+	public void testSearchByCondition() {
+		SearchCondition searchCondition = new SearchCondition();
+		searchCondition.setName("8");
+		searchCondition.setPageIndex(2);
+		searchCondition.setPageSize(3);
+		IStudentDao studentDao = new StudentDaoMysqlImpl();
+		List<Student> list = studentDao.searchByCondition(searchCondition);
+		for (Student student : list) {
+			System.out.println(student);
+		}
+	}
+	
+	@Test
+	public void testGetTotalCountByCondition() {
+		SearchCondition searchCondition = new SearchCondition();
+		searchCondition.setName("8");
+		searchCondition.setAge("8");
+		searchCondition.setPageIndex(2);
+		searchCondition.setPageSize(3);
+		IStudentDao studentDao = new StudentDaoMysqlImpl();
+		int count = studentDao.getTotalCountByCondition(searchCondition);
+		System.out.println(count);
 	}
 }

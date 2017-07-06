@@ -77,7 +77,7 @@ public interface IStudentService {
 	 * @param searchCondition
 	 * @return
 	 */
-	public abstract List<Student> searchByCondition(
+	public abstract PageBean<Student> searchByCondition(
 			SearchCondition searchCondition);
 
 	/**
