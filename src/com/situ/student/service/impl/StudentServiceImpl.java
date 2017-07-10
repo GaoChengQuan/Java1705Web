@@ -19,7 +19,7 @@ public class StudentServiceImpl implements IStudentService{
 
 	@Override
 	public boolean add(Student student) throws NameRepeatException {
-		if (studentDao.checkStudent(student)) {
+		if (studentDao.checkName(student.getName())) {
 			throw new NameRepeatException("姓名重复");
 		} else {
 			return studentDao.add(student);
@@ -112,6 +112,17 @@ public class StudentServiceImpl implements IStudentService{
 		pageBean.setList(list);
 		
 		return pageBean;
+	}
+
+	@Override
+	public boolean checkName(String name) {
+		return studentDao.checkName(name);
+	}
+
+	@Override
+	public void findByNameAndPassword(String name, String password) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

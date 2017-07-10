@@ -67,10 +67,10 @@ public interface IStudentDao {
 	
 	/**
 	 * 查看指定的学生姓名存不存在
-	 * @param student
+	 * @param name
 	 * @return true:学生已经存在  false：学生不存在
 	 */
-	public abstract boolean checkStudent(Student student);
+	public abstract boolean checkName(String name);
 
 	/**
 	 * 根据出生时间段查找学生

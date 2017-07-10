@@ -87,4 +87,14 @@ public interface IStudentService {
 	 * @return
 	 */
 	public abstract PageBean getPageBean(int pageIndex, int pageSize);
+
+	/**
+	 * 验证指定的名字存不存在
+	 * @param name
+	 * @return true:存在  false：不存在
+	 */
+	public abstract boolean checkName(String name);
+
+	
+	public abstract void findByNameAndPassword(String name, String password);
 }

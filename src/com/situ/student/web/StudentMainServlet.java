@@ -69,7 +69,6 @@ public class StudentMainServlet extends BaseServlet {
 	}
 
 	private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		req.setCharacterEncoding("utf-8");
 		String id = req.getParameter("id");
 		String name = req.getParameter("name");
 		String age = req.getParameter("age");
@@ -110,7 +109,6 @@ public class StudentMainServlet extends BaseServlet {
 	}
 
 	private void add(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		req.setCharacterEncoding("utf-8");
 		// 1.接收参数
 		String name = req.getParameter("name");
 		String age = req.getParameter("age");
@@ -132,6 +130,15 @@ public class StudentMainServlet extends BaseServlet {
 		resp.setContentType("text/html;charset=utf-8");
 		// 重定向
 		resp.sendRedirect(req.getContextPath() + "/student?method=pageList");
-		
+	}
+	
+	
+	private void checkName(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		String name = req.getParameter("name");
+		boolean isExit = studentService.checkName(name);
+		//{"isExit":isExit}
+		resp.setContentType("charset=utf-8");
+		//resp.getWriter().write("{\"isExit\":isExit}");
+		resp.getWriter().write("{\"isExit\":" + isExit + "}");
 	}
 }

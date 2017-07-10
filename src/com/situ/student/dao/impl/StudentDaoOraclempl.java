@@ -34,7 +34,7 @@ public class StudentDaoOraclempl implements IStudentDao{
 	}
 
 	@Override
-	public boolean checkStudent(Student student) {
+	public boolean checkName(String name) {
 		return false;
 	}
 
