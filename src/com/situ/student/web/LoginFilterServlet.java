@@ -2,6 +2,7 @@ package com.situ.student.web;
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +33,12 @@ public class LoginFilterServlet extends BaseServlet {
 			HttpSession session = req.getSession();
 			//2.把数据存到域对象中
 			session.setAttribute("student", student);
+			
+			//用户登录后添加到在线列表集合
+			List<Student> onlineStudentList = (List<Student>) getServletContext().getAttribute("onlineStudentList");
+			onlineStudentList.add(student);
+			//getServletContext().setAttribute("onlineStudentList", onlineStudentList);
+			
 			//3.跳转到用户主页IndexServlet
 			resp.sendRedirect(req.getContextPath() + "/student?method=pageList");
 		} else {
@@ -46,7 +53,14 @@ public class LoginFilterServlet extends BaseServlet {
 		HttpSession session = req.getSession(false);
 		if (session != null) {
 			// 2、在session域对象中删除
-			session.removeAttribute("student");
+			Student student = (Student) session.getAttribute("student");
+			//session.removeAttribute("student");
+			
+			//在线列表用移除
+			/*List<Student> onlineStudentList = (List<Student>) getServletContext().getAttribute("onlineStudentList");
+			onlineStudentList.remove(student);*/
+			//销毁session
+			session.invalidate();
 		}
 		// 3.回到登陆界面
 		resp.sendRedirect(req.getContextPath() + "/login.jsp");

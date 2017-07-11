@@ -2,7 +2,10 @@ package com.situ.student.entity;
 
 import java.util.Date;
 
-public class Student {
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+
+public class Student implements HttpSessionBindingListener {
 	private int id;
 	private String name;
 	private String password;
@@ -91,4 +94,19 @@ public class Student {
 				+ ", birthday=" + birthday + "]";
 	}
 
+	@Override
+	public void valueBound(HttpSessionBindingEvent event) {
+		String name = event.getName();
+		Student student = (Student) event.getValue();
+		System.out.println("valueBound name:" + name);
+		System.err.println("valueBound value: " + student);
+	}
+
+	@Override
+	public void valueUnbound(HttpSessionBindingEvent event) {
+		String name = event.getName();
+		Student student = (Student) event.getValue();
+		System.out.println("valueUnbound name:" + name);
+		System.err.println("valueUnbound value: " + student);
+	}
 }

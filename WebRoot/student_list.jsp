@@ -50,6 +50,8 @@
 					href="${pageContext.request.contextPath}/add_student.jsp">添加学生</a>
 				<a class="btn btn-primary"
 					href="${pageContext.request.contextPath}/student?method=pageList">查询所有</a>
+				<a class="btn btn-primary"
+					href="${pageContext.request.contextPath}/student?method=onlineList">查询所有</a>
 			</form>
 		</div>
 		<table class="table table-bordered table-hover table-striped">

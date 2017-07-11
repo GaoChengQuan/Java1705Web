@@ -144,4 +144,10 @@ public class StudentMainServlet extends BaseServlet {
 		//resp.getWriter().write("{\"isExit\":isExit}");
 		resp.getWriter().write("{\"isExit\":" + isExit + "}");
 	}
+
+	private void onlineList(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		req.getRequestDispatcher("/online_student_list.jsp").forward(req, resp);
+	}
+	
+	
 }

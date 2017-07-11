@@ -16,6 +16,22 @@
  	<location>/common/404.html</location>
  </error-page>
  
+ <listener>
+ 	<listener-class>com.situ.day44.MyHttpSessionListener</listener-class>
+ </listener>
+ <!--  <listener>
+ 	<listener-class>com.situ.day44.MyServletContextListener</listener-class>
+ </listener> -->
+ <listener>
+ 	<listener-class>com.situ.student.listener.MyHttpSessionListener</listener-class>
+ </listener>
+  <listener>
+ 	<listener-class>com.situ.student.listener.OnlineStudentListListener</listener-class>
+ </listener>
+  <listener>
+ 	<listener-class>com.situ.day44.MyServletContextAttributeListener</listener-class>
+ </listener>
+ 
  <filter>
  	<filter-name>LoginFilter</filter-name>
  	<filter-class> com.situ.student.filter.LoginFilter</filter-class>
@@ -43,7 +59,7 @@
  
   <filter-mapping>
  	<filter-name>DataFilter</filter-name>
- 	<url-pattern>/*</url-pattern>
+ 	<url-pattern>/dataFilter</url-pattern>
   </filter-mapping>
  
  
@@ -455,6 +471,13 @@
     <servlet-name>LoginFilterServlet</servlet-name>
     <servlet-class>com.situ.student.web.LoginFilterServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ServletContextAttServlet</servlet-name>
+    <servlet-class>com.situ.day44.ServletContextAttServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -488,5 +511,9 @@
   <servlet-mapping>
     <servlet-name>LoginFilterServlet</servlet-name>
     <url-pattern>/loginFilter</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletContextAttServlet</servlet-name>
+    <url-pattern>/servletContextAttServlet</url-pattern>
   </servlet-mapping>
 </web-app>
