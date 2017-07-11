@@ -1,11 +1,9 @@
 package com.situ.student.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.situ.student.dao.IStudentDao;
 import com.situ.student.dao.impl.StudentDaoMysqlImpl;
-import com.situ.student.dao.impl.StudentDaoOraclempl;
 import com.situ.student.entity.Student;
 import com.situ.student.exception.NameRepeatException;
 import com.situ.student.service.IStudentService;
@@ -120,9 +118,8 @@ public class StudentServiceImpl implements IStudentService{
 	}
 
 	@Override
-	public void findByNameAndPassword(String name, String password) {
-		// TODO Auto-generated method stub
-		
+	public Student findByNameAndPassword(String name, String password) {
+		return studentDao.findByNameAndPassword(name, password);
 	}
 
 }

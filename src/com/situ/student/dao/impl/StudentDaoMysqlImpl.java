@@ -21,13 +21,14 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 		PreparedStatement preparedStatement = null;
 		try {
 			connection = JdbcUtil.getConnection();
-			String sql = "insert into student(name,age,gender,birthday) values(?,?,?,?);";
+			String sql = "insert into student(name,password,age,gender,birthday) values(?,?,?,?,?);";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, student.getName());
-			preparedStatement.setInt(2, student.getAge());
-			preparedStatement.setString(3, student.getGender());
+			preparedStatement.setString(2, student.getPassword());
+			preparedStatement.setInt(3, student.getAge());
+			preparedStatement.setString(4, student.getGender());
 			//date milliseconds since January 1, 1970,
-			preparedStatement.setDate(4, new java.sql.Date(student.getBirthday().getTime()));
+			preparedStatement.setDate(5, new java.sql.Date(student.getBirthday().getTime()));
 			int result = preparedStatement.executeUpdate();
 			if (result > 0) {
 				return true;
@@ -71,12 +72,13 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 		PreparedStatement preparedStatement = null;
 		try {
 			connection = JdbcUtil.getConnection();
-			String sql = "update student set name=?,age=?,gender=? where id=?;";
+			String sql = "update student set name=?,password=?,age=?,gender=? where id=?;";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, student.getName());
-			preparedStatement.setInt(2, student.getAge());
-			preparedStatement.setString(3, student.getGender());
-			preparedStatement.setInt(4, student.getId());
+			preparedStatement.setString(2, student.getPassword());
+			preparedStatement.setInt(3, student.getAge());
+			preparedStatement.setString(4, student.getGender());
+			preparedStatement.setInt(5, student.getId());
 			int result = preparedStatement.executeUpdate();
 			if (result > 0) {
 				return true;
@@ -105,10 +107,11 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				String name = resultSet.getString("name");
+				String password = resultSet.getString("password");
 				int age = resultSet.getInt("age");
 				String gender = resultSet.getString("gender");
 				Date birthday = resultSet.getDate("birthday");
-				Student student = new Student(id, name, age, gender, birthday);
+				Student student = new Student(id, password, name, age, gender, birthday);
 				list.add(student);
 			}
 		} catch (SQLException e) {
@@ -134,9 +137,11 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			while (resultSet.next()) {
 				int stuId = resultSet.getInt("id");
 				String name = resultSet.getString("name");
+				String password = resultSet.getString("password");
 				int age = resultSet.getInt("age");
 				String gender = resultSet.getString("gender");
-				student = new Student(id, name, age, gender);
+				Date birthday = resultSet.getDate("birthday");
+				student = new Student(id, name, password, age, gender, birthday);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -186,9 +191,11 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				String stuName = resultSet.getString("name");
+				String password = resultSet.getString("password");
 				int age = resultSet.getInt("age");
 				String gender = resultSet.getString("gender");
-				Student student = new Student(id, stuName, age, gender);
+				Date birthday = resultSet.getDate("birthday");
+				Student student = new Student(id, stuName, password, age, gender, birthday);
 				list.add(student);
 			}
 		} catch (SQLException e) {
@@ -215,9 +222,11 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				String stuName = resultSet.getString("name");
+				String password = resultSet.getString("password");
 				int age = resultSet.getInt("age");
 				String gender = resultSet.getString("gender");
-				Student student = new Student(id, stuName, age, gender);
+				Date birthday = resultSet.getDate("birthday");
+				Student student = new Student(id, stuName, password, age, gender, birthday);
 				list.add(student);
 			}
 		} catch (SQLException e) {
@@ -243,9 +252,11 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				String name = resultSet.getString("name");
+				String password = resultSet.getString("password");
 				int age = resultSet.getInt("age");
 				String stuGender = resultSet.getString("gender");
-				Student student = new Student(id, name, age, stuGender);
+				Date birthday = resultSet.getDate("birthday");
+				Student student = new Student(id, name, password, age, gender, birthday);
 				list.add(student);
 			}
 		} catch (SQLException e) {
@@ -272,10 +283,11 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				String name = resultSet.getString("name");
+				String password = resultSet.getString("password");
 				int age = resultSet.getInt("age");
 				String gender = resultSet.getString("gender");
 				Date birthday = resultSet.getDate("birthday");
-				Student student = new Student(name, age, gender, birthday);
+				Student student = new Student(name, password, age, gender, birthday);
 				list.add(student);
 			}
 		} catch (SQLException e) {
@@ -327,10 +339,11 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				String name = resultSet.getString("name");
+				String password = resultSet.getString("password");
 				int age = resultSet.getInt("age");
 				String gender = resultSet.getString("gender");
 				Date birthday = resultSet.getDate("birthday");
-				Student student = new Student(id, name, age, gender, birthday);
+				Student student = new Student(id, name, password, age, gender, birthday);
 				list.add(student);
 			}
 		} catch (SQLException e) {
@@ -380,10 +393,11 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				String name = resultSet.getString("name");
+				String password = resultSet.getString("password");
 				int age = resultSet.getInt("age");
 				String gender = resultSet.getString("gender");
 				Date birthday = resultSet.getDate("birthday");
-				Student student = new Student(id, name, age, gender, birthday);
+				Student student = new Student(id, name, password, age, gender, birthday);
 				list.add(student);
 			}
 		} catch (SQLException e) {
@@ -435,5 +449,37 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 		}
 		
 		return count;
+	}
+
+	@Override
+	public Student findByNameAndPassword(String name, String password) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		Student student = null;
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select * from student where name=? and password=?;";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, name);
+			preparedStatement.setString(2, password);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String stuName = resultSet.getString("name");
+				String stuPassword = resultSet.getString("password");
+				int age = resultSet.getInt("age");
+				String gender = resultSet.getString("gender");
+				Date birthday = resultSet.getDate("birthday");
+				student = new Student(id, stuName, stuPassword, age, gender, birthday);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(connection, preparedStatement);
+		}
+		return student;
+	
 	}
 }

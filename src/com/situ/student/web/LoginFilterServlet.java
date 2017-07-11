@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.situ.student.entity.Student;
 import com.situ.student.service.IStudentService;
 import com.situ.student.service.impl.StudentServiceImpl;
 
@@ -18,7 +19,8 @@ public class LoginFilterServlet extends BaseServlet {
 	private void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
 		String name = req.getParameter("name");
 		String password = req.getParameter("password");
-		if (name.equals("zhangsan") && password.equals("123")) {
+		Student student =  studentService.findByNameAndPassword(name, password);
+		if (student != null) {
 			//登陆成功
 			/**
 			 * request域对象：不适合，整个网站必须用存储转发跳转界面才可以。
@@ -29,7 +31,7 @@ public class LoginFilterServlet extends BaseServlet {
 			//1.构造seesion域对象
 			HttpSession session = req.getSession();
 			//2.把数据存到域对象中
-			session.setAttribute("userName", name);
+			session.setAttribute("student", student);
 			//3.跳转到用户主页IndexServlet
 			resp.sendRedirect(req.getContextPath() + "/student?method=pageList");
 		} else {
@@ -38,7 +40,15 @@ public class LoginFilterServlet extends BaseServlet {
 		}
 	}
 	
-	private void loginOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
-		
+	private void loginOut(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		// 1.得到session
+		HttpSession session = req.getSession(false);
+		if (session != null) {
+			// 2、在session域对象中删除
+			session.removeAttribute("student");
+		}
+		// 3.回到登陆界面
+		resp.sendRedirect(req.getContextPath() + "/login.jsp");
 	}
 }

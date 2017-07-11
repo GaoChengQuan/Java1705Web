@@ -33,12 +33,17 @@
   
   <body>
      <div class="container" style="width:40%">
+        <jsp:include page="header.jsp"></jsp:include>
      	<h2>添加学生信息</h2>
 	  	<form action="${pageContext.request.contextPath}/student?method=add" method="post" >
 		  <div class="form-group">
 		    <label for="name">姓名</label>
 		    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
 		    <span id="nameInfo"></span>
+		  </div>
+		  <div class="form-group">
+		    <label for="password">密码</label>
+		    <input type="text" class="form-control" id="password" name="password" placeholder="Password">
 		  </div>
 		  <div class="form-group">
 		    <label for="age">年龄</label>

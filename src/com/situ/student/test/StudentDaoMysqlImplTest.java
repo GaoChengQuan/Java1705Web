@@ -16,7 +16,7 @@ public class StudentDaoMysqlImplTest {
 	@Test
 	public void testAdd() {
 		Date date = new Date();
-		Student student = new Student("xxxqqqq", 99, "男", date);
+		Student student = new Student("xxxqqqq", "123", 99, "男", date);
 		IStudentDao studentDao = new StudentDaoMysqlImpl();
 		boolean result = studentDao.add(student);
 		if (result) {
@@ -28,7 +28,7 @@ public class StudentDaoMysqlImplTest {
 	
 	@Test
 	public void testDelete() {
-		Student student = new Student(7, "xxx", 99, "男");
+		Student student = new Student(7, "zhangsan", "123", 99, "男", new Date());
 		IStudentDao studentDao = new StudentDaoMysqlImpl();
 		boolean result = studentDao.delete(7);
 		if (result) {
@@ -40,7 +40,7 @@ public class StudentDaoMysqlImplTest {
 	
 	@Test
 	public void testUpdate() {
-		Student student = new Student(8, "aaaa", 199, "男");
+		Student student = new Student(8, "zhangsan", "123", 99, "男", new Date());
 		IStudentDao studentDao = new StudentDaoMysqlImpl();
 		boolean result = studentDao.update(student);
 		if (result) {

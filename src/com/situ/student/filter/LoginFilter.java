@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.situ.student.entity.Student;
+
 public class LoginFilter implements Filter{
 
 	@Override
@@ -40,12 +42,12 @@ public class LoginFilter implements Filter{
 				return;
 			}
 			// 2.得到会话数据
-			String userName = (String) session.getAttribute("userName");
-			if (userName == null) {
+			Student student = (Student) session.getAttribute("student");
+			if (student == null) {
 				resp.sendRedirect(req.getContextPath() + "/login.jsp");
 				return;
 			}
-			//验证成功，放行
+			//验证成功，放行(可以访问jsp或者servlet这些资源)
 			chain.doFilter(request, response);
 		}
 	}

@@ -95,6 +95,11 @@ public interface IStudentService {
 	 */
 	public abstract boolean checkName(String name);
 
-	
-	public abstract void findByNameAndPassword(String name, String password);
+	/**
+	 * 根据用户名和密码查询学生对象
+	 * @param name
+	 * @param password
+	 * @return student!=null 返回指定用户名和密码学生, null：没有这个用户名和密码学生，登陆失败
+	 */
+	public abstract Student findByNameAndPassword(String name, String password);
 }

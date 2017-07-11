@@ -78,7 +78,7 @@ public class MainServlet extends HttpServlet {
 		System.out.println("gender: " + gender);
 		// 2.处理业务
 		Date date = new Date();
-		Student student = new Student(name, Integer.parseInt(age), gender, date);
+		Student student = new Student(name, "123", Integer.parseInt(age), gender, date);
 		IStudentService studentService = new StudentServiceImpl();
 		boolean result = false;
 		try {

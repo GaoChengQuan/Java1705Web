@@ -5,6 +5,7 @@ import java.util.Date;
 public class Student {
 	private int id;
 	private String name;
+	private String password;
 	private int age;
 	private String gender;
 	private Date birthday;
@@ -13,36 +14,34 @@ public class Student {
 		super();
 	}
 
-	public Student(String name, int age, String gender, Date birthday) {
+	public Student(String name, String password, int age, String gender,
+			Date birthday) {
 		super();
 		this.name = name;
+		this.password = password;
 		this.age = age;
 		this.gender = gender;
 		this.birthday = birthday;
 	}
 	
-	public Student(String name, int age, String gender) {
-		super();
-		this.name = name;
-		this.age = age;
-		this.gender = gender;
-	}
 
-	public Student(int id, String name, int age, String gender, Date birthday) {
+	public Student(int id, String name, String password, int age,
+			String gender, Date birthday) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.password = password;
 		this.age = age;
 		this.gender = gender;
 		this.birthday = birthday;
 	}
 
-	public Student(int id, String name, int age, String gender) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.age = age;
-		this.gender = gender;
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public int getId() {
@@ -87,7 +86,9 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", age=" + age
-				+ ", gender=" + gender + ", birthday=" + birthday + "]";
+		return "Student [id=" + id + ", name=" + name + ", password="
+				+ password + ", age=" + age + ", gender=" + gender
+				+ ", birthday=" + birthday + "]";
 	}
+
 }

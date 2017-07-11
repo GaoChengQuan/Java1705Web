@@ -19,6 +19,11 @@
 					id="name" name="name" value="${student.getName()}">
 			</div>
 			<div class="form-group">
+				<label for="password">密码</label> 
+				<input type="text" class="form-control"
+					id="password" name="password" value="${student.getPassword()}">
+			</div>
+			<div class="form-group">
 				<label for="age">年龄</label>
 				<input type="text" class="form-control"
 					id="age" name="age" value="${student.getAge()}">

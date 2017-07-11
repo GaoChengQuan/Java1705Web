@@ -71,11 +71,13 @@ public class StudentMainServlet extends BaseServlet {
 	private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String id = req.getParameter("id");
 		String name = req.getParameter("name");
+		String password = req.getParameter("password");
 		String age = req.getParameter("age");
 		String gender = req.getParameter("gender");
 		
 		Student student = studentService.findById(Integer.parseInt(id));
 		student.setName(name);
+		student.setPassword(password);
 		student.setAge(Integer.parseInt(age));
 		student.setGender(gender);
 		studentService.update(student);
@@ -111,6 +113,7 @@ public class StudentMainServlet extends BaseServlet {
 	private void add(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		// 1.接收参数
 		String name = req.getParameter("name");
+		String password = req.getParameter("password");
 		String age = req.getParameter("age");
 		String gender = req.getParameter("gender");
 		System.out.println("name:" + name);
@@ -118,7 +121,7 @@ public class StudentMainServlet extends BaseServlet {
 		System.out.println("gender:" + gender);
 		// 2.处理业务
 		Date date = new Date();
-		Student student = new Student(name, Integer.parseInt(age), gender, date);
+		Student student = new Student(name, password, Integer.parseInt(age), gender, date);
 		IStudentService studentService = new StudentServiceImpl();
 		boolean result = false;
 		try {

@@ -33,7 +33,7 @@
 </head>
 <body>
 	<div class="container" style="width:70%">
-		<h2 align="center">学生信息管理系统</h2>
+		<jsp:include page="header.jsp"></jsp:include>
 		<div>
 			<form id="searchForm" action="${pageContext.request.contextPath}/student?method=searchByCondition" method="post">
 				<input type="hidden" name="pageIndex" id="pageIndex"/>
@@ -56,6 +56,7 @@
 			<tr>
 				<td>ID</td>
 				<td>姓名</td>
+				<td>密码</td>
 				<td>年龄</td>
 				<td>性别</td>
 				<td>删除</td>
@@ -65,6 +66,7 @@
 				<tr>
 					<td>${student.getId()}</td>
 					<td>${student.getName()}</td>
+					<td>${student.getPassword()}</td>
 					<td>${student.getAge()}</td>
 					<td>${student.getGender()}</td>
 					<td><a href="javascript:void(0);"
